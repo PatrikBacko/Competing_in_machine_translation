@@ -2,11 +2,14 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 
-tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-cs-en")
-model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-cs-en")
+
+#import model from local directory .\opus-mt-cs-en
+tokenizer = AutoTokenizer.from_pretrained("Competing_in_machine_translation\opus-mt-cs-en")
+model = AutoModelForSeq2SeqLM.from_pretrained("Competing_in_machine_translation\opus-mt-cs-en")
+
 
 # Translate Czech to English
-text = "kámo souhlasim"
+text = "kiki, miluješ ma ?"
 encoded = tokenizer.encode(text, return_tensors="pt")
 generated_tokens = model.generate(encoded, num_beams=5, num_return_sequences=3)
 result = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
