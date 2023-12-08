@@ -9,8 +9,8 @@ model = AutoModelForSeq2SeqLM.from_pretrained("Competing_in_machine_translation\
 
 
 # Translate Czech to English
-text = "kiki, miluješ ma ?"
-encoded = tokenizer.encode(text, return_tensors="pt")
+text = "Dobrý den, jak se máte?"
+encoded = tokenizer.encode(text, return_tensors="pt") 
 generated_tokens = model.generate(encoded, num_beams=5, num_return_sequences=3)
 result = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
 for i, r in enumerate(result):
